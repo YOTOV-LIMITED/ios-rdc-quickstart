@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ios-rdc-quickstart by YOTOV-LIMITED</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Ios-rdc-quickstart</h1>
+      <h2 class="project-tagline">How to get started with the iOS Real Device Cloud.</h2>
+      <a href="https://github.com/YOTOV-LIMITED/ios-rdc-quickstart" class="btn">View on GitHub</a>
+      <a href="https://github.com/YOTOV-LIMITED/ios-rdc-quickstart/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/YOTOV-LIMITED/ios-rdc-quickstart/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="quick-start-to-the-sauce-labs-ios-real-device-cloud" class="anchor" href="#quick-start-to-the-sauce-labs-ios-real-device-cloud" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Quick Start to the Sauce Labs iOS Real Device Cloud</h1>
+
+<p>We're proud to present the new Sauce Labs Real Device Cloud. Now, you
+can test your apps and websites on actual iOS devices like the iPhone 6. </p>
+
+<p>We can do it because we've hooked real iOS devices up to the cloud, and made them
+run your tests just like iOS simulators... almost.</p>
+
+<p>To get you started, we've put together some sample tests, with a sample app, that you can try -- right now --
+with your own Sauce Labs account.</p>
+
+
+
+
+
+<p><strong>Table of Contents</strong> </p>
+
+<ul>
+<li>
+<a href="#running-the-example-tests">Running the example tests</a>
+
+<ul>
+<li>
+<a href="#environment-variables">Environment variables</a>
+
+<ul>
+<li><a href="#linux-or-mac-os-x-users">Linux or Mac OS X users</a></li>
+<li><a href="#windows-users">Windows users</a></li>
+</ul>
+</li>
+<li><a href="#install-test-libraries">Install test libraries</a></li>
+<li><a href="#how-to-run-the-tests">How to run the tests</a></li>
+</ul>
+</li>
+<li>
+<a href="#how-to-write-your-own-tests">How to write your own tests</a>
+
+<ul>
+<li><a href="#web-tests">Web tests</a></li>
+<li>
+<a href="#app-tests">App tests</a>
+
+<ul>
+<li><a href="#building">Building</a></li>
+<li><a href="#uploading">Uploading</a></li>
+<li><a href="#provisioning">Provisioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#where-to-find-out-more">Where to find out more</a></li>
+</ul>
+
+
+
+<h2>
+<a id="running-the-example-tests" class="anchor" href="#running-the-example-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running the example tests</h2>
+
+<p>Sauce Labs works with Selenium libraries in any language, but the examples here
+are (for now) just in Python. So you'll need to be familiar with running scripts 
+on the command line, and have Python 2.x or better installed.</p>
+
+<p>To get these scripts to work, first you'll need a couple of environment variables. </p>
+
+<h3>
+<a id="environment-variables" class="anchor" href="#environment-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Environment variables</h3>
+
+<p><code>SAUCE_USERNAME</code> should be the 
+username you use to log into <a href="http://saucelabs.com/">https://saucelabs.com/</a>. </p>
+
+<p><code>SAUCE_ACCESS_KEY</code> should be the "access key" that Sauce assigned to you. To find it, first log into
+your account on the Sauce Labs website.</p>
+
+<ul>
+<li>If you're using the new interface (it looks blue), click on your user account in the bottom left-hand
+corner. This should pop open a menu. Click on <strong>User Settings</strong>. This opens your User Settings page. 
+Scroll down to find your Access Key.</li>
+<li>In the old interface (it looks more red and yellow), the Access Key is in the grey column on the 
+left hand side.</li>
+</ul>
+
+<h4>
+<a id="linux-or-mac-os-x-users" class="anchor" href="#linux-or-mac-os-x-users" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Linux or Mac OS X users</h4>
+
+<p>Type these commands:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-k">export</span> SAUCE_USERNAME=your_username
+<span class="pl-k">export</span> SAUCE_ACCESS_KEY=your_access_key</pre></div>
+
+<p>You might want to add these lines to your shell's startup profile, which for most people
+is in their home directory under <code>.bash_profile</code>.</p>
+
+<h4>
+<a id="windows-users" class="anchor" href="#windows-users" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows users</h4>
+
+<p>Type these commands:</p>
+
+<pre><code>set SAUCE_USERNAME=your_username
+set SAUCE_ACCESS_KEY=your_access_key
+</code></pre>
+
+<p>You might want to add this to your default environment variables.</p>
+
+<h3>
+<a id="install-test-libraries" class="anchor" href="#install-test-libraries" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install test libraries</h3>
+
+<p>If you use Sauce already, you almost certainly have this stuff, but in case you are 
+on a fresh machine: in the shell, enter the directory where you installed these files.
+And then, install dependencies with <code>pip install -r requirements.txt</code>.</p>
+
+<h3>
+<a id="how-to-run-the-tests" class="anchor" href="#how-to-run-the-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to run the tests</h3>
+
+<p>Log into your account on Sauce Labs. It's not necessary, but it's just interesting to watch the tests
+progress.</p>
+
+<p>In a shell, enter the directory containing the test files. To run the tests, just type <code>nosetests -vv</code>. </p>
+
+<p><code>nosetests</code> will find anything that looks like a test and run it. It may take a while before you
+see anything, but soon you'll see tests running, in your shell and in the web interface for your account!</p>
+
+<h2>
+<a id="how-to-write-your-own-tests" class="anchor" href="#how-to-write-your-own-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to write your own tests</h2>
+
+<p>Hopefully that worked (if it didn't, see the contact info below) and you're interested in writing your own
+tests now. Let's have a look at these example tests for clues about how to write your own.</p>
+
+<h3>
+<a id="web-tests" class="anchor" href="#web-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Web tests</h3>
+
+<p>To start, let's look at <code>test_web.py</code>, and see what's happening. </p>
+
+<p><code>test_web</code> peforms a simple test of a web page, on two different platforms; an iPhone 6 simulator, and 
+an iPhone 6. The <code>@on_platforms</code> decorator is just a handy way of running the same test on various platforms.</p>
+
+<p>As you can see, the <code>capabilities</code> for a real device are very similar to those for a simulator. 
+The only difference is that instead of saying <code>"deviceName": "iPhone 6"</code>, you use <code>"deviceName": "iPhone 6 Device"</code>.</p>
+
+<p>And that's just about it. There isn't much that's different for a web test between platforms.</p>
+
+<p>The one thing to watch out for is that we haven't yet released <a href="https://wiki.saucelabs.com/display/DOCS/Using+Sauce+Connect+for+Testing+Behind+the+Firewall+or+on+Localhost">Sauce Connect</a> for iOS 
+Real Devices. But it's on the way! Check with Sauce Labs for updates.</p>
+
+<h3>
+<a id="app-tests" class="anchor" href="#app-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>App tests</h3>
+
+<p>Pop open the file <code>test_app.py</code> and have a look!</p>
+
+<p>This performs a really simple test on a simple app. The app has two views, and the test just clicks on 
+one button and checks if the view has changed.</p>
+
+<p>You specify a real device in your capabilities just like the web test - <code>"deviceName": "iPhone 6 Device"</code>. </p>
+
+<p>You put the app in <code>"app"</code>, but there are a few things to watch out for:</p>
+
+<h4>
+<a id="building" class="anchor" href="#building" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Building</h4>
+
+<p>Up till now you've probably only been uploading simulator apps to Sauce Labs. But if you run your app on a real iOS device, it 
+has to be compiled and archived specially for one.</p>
+
+<p>We can't go into a full discussion of how to compile iOS apps, but here are some tips to get you started:</p>
+
+<ul>
+<li>You can make a <code>.app</code> directory or an <code>.ipa</code>. (See the <strong>Uploading</strong> section).</li>
+<li>If you are using Apple's development IDE, XCode, you will have to create a "scheme" which archives the application to a file. Then
+use that as your app file. Here's where to start in Apple's documentation: 
+
+<ul>
+<li>
+<a href="https://developer.apple.com/library/ios/documentation/ToolsLanguages/Conceptual/Xcode_Overview/BuildingYourApp.html">XCode Overview: Building Your App</a> </li>
+<li>
+<a href="https://developer.apple.com/library/ios/recipes/xcode_help-scheme_editor/Articles/SchemeArchive.html">XCode Help: Archiving Your Application</a> </li>
+</ul>
+</li>
+<li>
+<p>If you are building with the command-line tool, <code>xcodebuild</code>, the arguments should include:</p>
+
+<p><code>-arch armv7 -sdk iphoneos</code></p>
+
+<p>This StackOverflow post, 
+<a href="http://stackoverflow.com/questions/5010062/xcodebuild-simulator-or-device">xcodebuild simulator or device?</a> may also help.</p>
+</li>
+</ul>
+
+<h4>
+<a id="uploading" class="anchor" href="#uploading" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Uploading</h4>
+
+<p>Sauce Labs can accept your app in two formats.</p>
+
+<ul>
+<li>As an IPA archive, whose filename must end in <code>.ipa</code>; or</li>
+<li>A zipped <code>.app</code> directory, whose filename must end in <code>.zip</code>.</li>
+</ul>
+
+<p>The big difference from simulator tests is that you have to upload a real device iOS app to 
+<a href="https://wiki.saucelabs.com/display/DOCS/Using+Sauce+Storage+for+Test+Assets">Sauce Storage</a> first. And
+then, to test the app you just uploaded, use a <code>sauce-storage:</code> URL as the <code>app</code> property in the capabilities.</p>
+
+<p>For instance, if your app is called <code>your_app.zip</code>, you would upload it to Sauce Storage, and then in the capabilities for 
+your test you would use <code>app: "sauce-storage:your_app.zip"</code>.</p>
+
+<p>Sauce Storage is a convenient place to temporarily store files that your tests will need. Rather than waste time and bandwidth
+transferring the file over to us for every test, you can just upload it to us once, in a secure, private area.</p>
+
+<p>If you want to upload the app yourself ahead of time, the <code>saucestorage</code> helper library, included here, could be of use. Or, 
+use a simple shell command with <code>curl</code>. See the <a href="https://wiki.saucelabs.com/display/DOCS/Temporary+Storage+Methods">Sauce Storage API documentation</a>. </p>
+
+<p>If you write tests in Python, we've made it extra easy with the helpers in this package. <code>sauce_storage_upload("path/to/your_app.zip")</code> will upload 
+the file and return the correct <code>sauce-storage:</code> URL.</p>
+
+<h4>
+<a id="provisioning" class="anchor" href="#provisioning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provisioning</h4>
+
+<p>Here's a thing you <em>don't</em> have to worry about, but in case you have questions:</p>
+
+<p>You may already be aware that iOS apps in development won't run on just any device. They need to be "provisioned" for that device, first. 
+But you don't have to do anything special to ensure your apps are "provisioned" for our iOS Devices. We've taken care of all that
+by re-provisioning your apps for our devices, on the fly. </p>
+
+<p>Long story short: if you can run your app on an iOS real device, so can we. </p>
+
+<h2>
+<a id="where-to-find-out-more" class="anchor" href="#where-to-find-out-more" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Where to find out more</h2>
+
+<p>We're still producing supporting materials for the iOS Real Device Cloud, so if you have any questions contact <a href="mailto:chiarng@saucelabs.com">Chiarng Lin</a> 
+or <a href="mailto:neil@saucelabs.com">Neil Manvar</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/YOTOV-LIMITED/ios-rdc-quickstart">Ios-rdc-quickstart</a> is maintained by <a href="https://github.com/YOTOV-LIMITED">YOTOV-LIMITED</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
